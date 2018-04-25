@@ -1,0 +1,46 @@
+local tool = script.Parent
+local ActiveColor = Color3.new(0,10,0)
+local InactiveColor = Color3.new(0,0,0)
+local TransparentValue 
+
+
+local function onEquip()
+	
+	tool.Handle.Color = InactiveColor
+--	tool.Sound.Sound1.Playing = true
+    	
+end
+   
+local function onUnequip()
+	tool.Handle.Color = InactiveColor
+--	tool.Sound.Sound3.Playing = true
+
+end
+
+local function onActivate()
+	tool.Handle.Color = ActiveColor
+--	tool.Sound.Sound2.Playing = true
+
+		for i= 1,0,-0.1 do
+		tool.Handle.Transparency = i
+		wait(0.05)
+		print(i)
+	end	
+	
+end
+
+local function onDeativate()
+	tool.Handle.Color = ActiveColor
+		for i= 0,1,0.1 do
+			tool.Handle.Transparency = i
+			wait(0.05)
+			print(i)
+		end
+			
+	
+end
+
+tool.Equipped:connect(onEquip)
+tool.Unequipped:connect(onUnequip)
+tool.Activated:connect(onActivate)
+tool.Deactivated:connect(onDeativate)
